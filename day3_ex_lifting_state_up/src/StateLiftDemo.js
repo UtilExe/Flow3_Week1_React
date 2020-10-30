@@ -16,10 +16,9 @@ const LiftDemo = () => {
         setTable(allPersons);
     }
 
-    function deletePerson(index, name) {
+    function deletePerson(index) {
         names.splice(index, 1);
-        console.log(names)
-        setNames(names);
+        setTable(allPersons);
     }
 
     function allPersons() {
