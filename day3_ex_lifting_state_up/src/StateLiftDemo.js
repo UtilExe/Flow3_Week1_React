@@ -4,6 +4,8 @@ const LiftDemo = () => {
     const [names, setNames] = useState([]);
     const [table, setTable] = useState(allPersons);
 
+    const isEditing = false;
+
     function handleChange(event) {
         const target = event.target;
         const value = target.value;
@@ -32,9 +34,10 @@ const LiftDemo = () => {
                     </thead>
                     <tbody>
                         {names.map((name, index) => (
-                            <tr key={index++}>
+                            <tr key={index}>
                                 <td>{name}</td>
-                                <td>  <button type="submit" onClick={() => deletePerson({ index } + 1)}>Delete</button> </td>
+                                <td>  <button type="submit" onClick={() => deletePerson(index)}>Delete</button> </td>
+
                             </tr>
                         ))}
                     </tbody>
