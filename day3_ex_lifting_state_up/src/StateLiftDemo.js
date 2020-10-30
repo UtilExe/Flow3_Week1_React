@@ -4,8 +4,6 @@ const LiftDemo = () => {
     const [names, setNames] = useState([]);
     const [table, setTable] = useState(allPersons);
 
-    const isEditing = false;
-
     function handleChange(event) {
         const target = event.target;
         const value = target.value;
@@ -23,6 +21,13 @@ const LiftDemo = () => {
         setTable(allPersons);
     }
 
+    function editPerson(index) {
+        console.log(names)
+        names.splice(index, 1, name);
+        console.log(names)
+        setTable(allPersons);
+    }
+
     function allPersons() {
         return (
             <div>
@@ -37,7 +42,7 @@ const LiftDemo = () => {
                             <tr key={index}>
                                 <td>{name}</td>
                                 <td>  <button type="submit" onClick={() => deletePerson(index)}>Delete</button> </td>
-
+                                <td>  <button type="submit" onClick={() => editPerson(index)}>Edit</button> </td>
                             </tr>
                         ))}
                     </tbody>
@@ -49,14 +54,15 @@ const LiftDemo = () => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <label>
-                    New Person
+                New Person
           <br />
-                    <input id="name" onChange={handleChange} type="text" value={name} />
-                </label>
+                <input id="name" onChange={handleChange} type="text" />
                 <input type="submit" value="Save" />
             </form>
-            <label>All Persons</label>
+            Edit Person
+            <form>
+                <input type="text" placeholder="New name" onChange={handleChange} />
+            </form>
             {table}
         </div>
     );
